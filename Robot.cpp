@@ -16,8 +16,8 @@ Vector2 Robot::getLookAheadPoint(Path p){
       Vector2 d = Vector2.sub(l,e);
       Vector2 f = Vector2.sub(e,location);
       Vector2 a = d.dot(d);
-      var b = 2*f.dot(d);
-      var c = f.dot(f) - lookDistance*lookDistance;
+      float b = 2*f.dot(d);
+      floatr c = f.dot(f) - lookDistance*lookDistance;
       float discriminant = b*b - 4*a*c;
       float t = 0;
       if (discriminant < 0) {
