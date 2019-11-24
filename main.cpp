@@ -11,6 +11,8 @@ int main(){
     std::cout << "bijour" << std::endl;
 
     Vector2 v(5.f, 2.f);
+    Vector2 b(5.f, 2.f);
+    Vector2 d = Vector2.sum(v,b);
 
     cout << v << endl;
 
