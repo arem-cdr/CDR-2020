@@ -17,6 +17,8 @@ std::ostream& operator<< (std::ostream& flux, Vector2 const& v) {
     return flux;
 }
 
+// TODO: operations +, - , dot, *
+
 float Vector2::getX() {
     return this->x;
 }
@@ -29,7 +31,4 @@ float Vector2::getY() {
 void Vector2::setY(float y) {
     this->y = y;
 }
-Vector2 sum(Vector2 v1,Vector2 v2){
-    Vector2 g(v1.getX()+v2.getX(),v1.getY()+v2.getY());
-    return g;
-}
+

@@ -11,7 +11,7 @@ class Vector2{
         void setY(float y);
         float getX();
         float getY();
-        Vector2 sum(Vector2 v1,Vector2 v2);
+        
         
 
     private:
