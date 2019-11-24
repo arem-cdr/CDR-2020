@@ -69,5 +69,3 @@ void Robot::updateVlVr(Path p){
     float vr = vnorm*(2-curvature*robotWidth)/2;
     float vl = vnorm*(2+curvature*robotWidth)/2;
 }
-
-*/
