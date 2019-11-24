@@ -5,7 +5,7 @@ class Robot{
     private:
         Vector2 location;
         float angle;
-        Vector2 vitesse;
+        Vector2 velocity; // last Vl and Vr calculated
         float lookDistance;
         float robotWidth;
 
