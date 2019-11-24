@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 class Vector2{
@@ -8,8 +10,8 @@ class Vector2{
         
 
     private:
-        float x ;
-        float y ;
+        float x;
+        float y;
 
     friend std::ostream& operator<< (std::ostream& flux, Vector2 const& v);
 

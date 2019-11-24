@@ -1,6 +1,6 @@
 #include "Robot.h"
-#include "Path.h"
-
+//#include "Path.h"
+/*
 Robot::Robot(Vector2 initLoc,float initAngle){
     location = initLoc;
     angle = initAngle;
@@ -70,3 +70,4 @@ void Robot::updateVlVr(Path p){
     float vl = vnorm*(2+curvature*robotWidth)/2;
 }
 
+*/
