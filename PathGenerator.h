@@ -1,33 +1,26 @@
 #pragma once
 
-#include "Vector2.h"
-
+#include <iostream>
 #include <vector>
 
-using namespace std;
+#include "Vector2.h"
+#include "Pathfinding.h"
+#include "DijkstraPathfinding.h"
 
-const int nbSubX = 300; 
-const int nbSubY = 200;
+using namespace std;
 
 class PathGenerator
 {
 private:
-
-    const int sizeX; // dim du terrain
-    const int sizeY;
-
-    float matrix[nbSubX][nbSubY];
+    Pathfinding *algoPathfinding;
 
     vector<Vector2> generatedPath;
 
 public:
     PathGenerator();
+    ~PathGenerator();
 
-    void transformObstacleInWeight();
-    void transformObstacleInWeightGradient();
+    vector<Vector2> generatePath(Vector2 startPos, Vector2 endPos);
 
-    vector<Vector2> dijkstra();
-
-    vector<Vector2> AStar();
-    
+    friend std::ostream &operator<<(std::ostream &flux, PathGenerator const &pathGenerator);
 };

@@ -16,8 +16,8 @@ Vector2 Robot::getLookAheadPoint(Path p){
       Vector2 d = Vector2.sub(l,e);
       Vector2 f = Vector2.sub(e,location);
       Vector2 a = d.dot(d);
-      float b = 2*f.dot(d);
-      floatr c = f.dot(f) - lookDistance*lookDistance;
+      var b = 2*f.dot(d);
+      var c = f.dot(f) - lookDistance*lookDistance;
       float discriminant = b*b - 4*a*c;
       float t = 0;
       if (discriminant < 0) {
@@ -69,5 +69,7 @@ void Robot::updateVlVr(Path p){
     float vr = vnorm*(2-curvature*robotWidth)/2;
     float vl = vnorm*(2+curvature*robotWidth)/2;
 }
+
+
 
 */

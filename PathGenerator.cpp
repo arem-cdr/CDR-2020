@@ -1,28 +1,29 @@
 #include "PathGenerator.h"
-#include "Vector2.h"
 
-
-PathGenerator::PathGenerator() : sizeX(0), sizeY(0)
+PathGenerator::PathGenerator()
 {
+    algoPathfinding = new DijkstraPathfinding();
 }
 
-
-void PathGenerator::transformObstacleInWeight(){
-
+PathGenerator::~PathGenerator()
+{
+    delete algoPathfinding;
+    algoPathfinding = NULL;
 }
 
-void PathGenerator::transformObstacleInWeightGradient(){
+vector<Vector2> PathGenerator::generatePath(Vector2 startPos, Vector2 endPos)
+{
+    this->generatedPath = this->algoPathfinding->generatePath(startPos, endPos);
 
+    return this->generatedPath;
 }
 
-vector<Vector2> PathGenerator::dijkstra(){
-    vector<Vector2> returnVector;
+std::ostream &operator<<(std::ostream &flux, PathGenerator const &pathGenerator)
+{
+    for (int i = 0; i < pathGenerator.generatedPath.size(); i++)
+    {
+        std::cout << "Point " << i << " : " << pathGenerator.generatedPath[i] << endl;
+    }
 
-    return returnVector;
-}
-
-vector<Vector2> PathGenerator::AStar(){
-    vector<Vector2> returnVector;
-
-    return returnVector;
+    return flux;
 }
