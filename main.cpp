@@ -14,7 +14,7 @@ int main()
 
     Vector2<float> f;
 
-    cout << v << endl;
+    cout << v << "test" << endl;
 
     PathGenerator p;
 
