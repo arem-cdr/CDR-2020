@@ -5,12 +5,12 @@
 class Obstacle
 {
 private:
-    Vector2 position;
+    Vector2<int> position;
     int rayon; // en mm
 
 public:
     Obstacle();
-    Obstacle(Vector2 position, int rayon);
+    Obstacle(Vector2<int> position, int rayon);
 
-    Vector2 getPosition();
+    Vector2<int> getPosition();
 };

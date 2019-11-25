@@ -4,17 +4,17 @@ class Robot
 {
 
 private:
-    Vector2 location;
+    Vector2<int> location;
     float angle;
-    Vector2 vitesse;
+    Vector2<int> vitesse;
     float lookDistance;
     float robotWidth;
 
 public:
-    Robot(Vector2 initLoc, float initAngle);
+    Robot(Vector2<int> initLoc, float initAngle);
 
-    Vector2 getNearestPointToPath();
-    Vector2 getLookAheadPoint();
+    Vector2<int> getNearestPointToPath();
+    Vector2<int> getLookAheadPoint();
     float getCurvature();
     void updateVlVr();
     float getVNormHere();

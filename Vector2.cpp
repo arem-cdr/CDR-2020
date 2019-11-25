@@ -1,30 +1,35 @@
 #include "Vector2.h"
-
-Vector2::Vector2()
+/*
+template <typename T>
+Vector2<T>::Vector2()
 {
-    x = 0.f;
-    y = 0.f;
+    x = 0;
+    y = 0;
 }
 
-Vector2::Vector2(float x, float y)
+template <typename T>
+Vector2<T>::Vector2(T x, T y)
 {
     this->x = x;
     this->y = y;
 }
 
-float Vector2::getX()
+template <typename T>
+T Vector2<T>::getX()
 {
     return this->x;
 }
 
-float Vector2::getY()
+template <typename T>
+T Vector2<T>::getY()
 {
     return this->y;
-}
+}*/
 
+/*
 std::ostream &operator<<(std::ostream &flux, Vector2 const &v)
 {
     std::cout << v.x << " " << v.y << std::endl;
 
     return flux;
-}
+}*/

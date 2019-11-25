@@ -8,10 +8,11 @@ using namespace std;
 
 int main()
 {
+    Vector2<int> v(5, 2);
+    Vector2<int> b(5, 1);
+    Vector2<int> d;
 
-    Vector2 v(5.f, 2.f);
-    Vector2 b(5.f, 1.f);
-    Vector2 d;
+    Vector2<float> f;
 
     cout << v << endl;
 

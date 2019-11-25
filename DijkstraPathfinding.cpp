@@ -15,9 +15,9 @@ void DijkstraPathfinding::updateObstacle(vector<Obstacle> obstacles)
 {
 }
 
-vector<Vector2> DijkstraPathfinding::generatePath(Vector2 startPos, Vector2 endPos)
+vector<Vector2<int>> DijkstraPathfinding::generatePath(Vector2<int> startPos, Vector2<int> endPos)
 {
-    vector<Vector2> returnVector;
+    vector<Vector2<int>> returnVector;
 
     returnVector.push_back(startPos);
 
