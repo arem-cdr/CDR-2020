@@ -13,7 +13,7 @@ private:
     //Vector2<int> indMatrixToMm(Vector2<int> indMatrix);
 
 public:
-    AStarPathfinding();
+    AStarPathfinding(float a);
 
     virtual void updateObstacle(vector<Obstacle> obstacles);
     virtual vector<Vector2<int>> generatePath(Vector2<int> startPos, Vector2<int> endPos);
