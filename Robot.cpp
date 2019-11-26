@@ -13,8 +13,8 @@ Vector2f Robot::getLookAheadPoint(PathSmoother ps){
     vector<PointS> p = ps.generateSPath();
     while(i<(p.size()-1)){
     
-      Vector2f d = p[i+1]-p[i];
-      Vector2f f = p[i]-location;
+      Vector2f d = p[i+1].toV2f()-p[i].toV2f();
+      Vector2f f = p[i].toV2f()-location;
       float a = dot(d,d);
       float b = 2*dot(f,d);
       float c = dot(f,f) - lookDistance*lookDistance;
@@ -40,9 +40,9 @@ Vector2f Robot::getLookAheadPoint(PathSmoother ps){
     }
 
 
-    Vector2f dd = p[goodi+1]-p[goodi];
+    Vector2f dd = p[goodi+1].toV2f()-p[goodi].toV2f();
     Vector2f facteur(goodt,goodt);
-    Vector2f gg = (facteur*dd) + ee;
+    Vector2f gg = (facteur*dd) + p[goodi].toV2f();
     return gg;
     
 }
@@ -59,7 +59,7 @@ float Robot::getCurvature(Vector2f lookp){
 }
 
 float Robot::getVNormHere(PathSmoother p){
-
+    return 0; // TODO
 }
 
 void Robot::updateVlVr(PathSmoother p){

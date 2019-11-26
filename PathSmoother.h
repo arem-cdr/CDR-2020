@@ -3,6 +3,7 @@
 #include <vector>
 #include "PointS.h"
 #include <iostream>
+using namespace std;
 
 class PathSmoother
 {   

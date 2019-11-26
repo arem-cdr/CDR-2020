@@ -2,6 +2,7 @@
 #include "PathSmoother.h"
 #include "PointS.h"
 #include <vector>
+using namespace std;
 
 class Robot
 {
