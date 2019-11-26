@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "Vector2f.h"
 
 
 class PointS
@@ -14,6 +15,7 @@ public:
     float getX() { return y; }
     float getY() { return x; }
     float getZ() { return z; }
+    Vector2f toV2f() { Vector2f v(x,y); return v;}
     
 
 private:
