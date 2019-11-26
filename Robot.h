@@ -1,4 +1,7 @@
 #include "Vector2f.h"
+#include "PathSmoother.h"
+#include "PointS.h"
+#include <vector>
 
 class Robot
 {
@@ -13,9 +16,8 @@ private:
 public:
     Robot(Vector2f initLoc, float initAngle);
 
-    Vector2f getNearestPointToPath();
-    Vector2f getLookAheadPoint();
-    float getCurvature();
-    void updateVlVr();
-    float getVNormHere();
+    Vector2f getLookAheadPoint(PathSmoother ps);
+    float getCurvature(Vector2f lookp);
+    void updateVlVr(PathSmoother ps);
+    float getVNormHere(PathSmoother ps);
 };
