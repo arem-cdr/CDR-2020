@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Vector2.h"
+#include "Vector2f.h"
 #include "Pathfinding.h"
 #include "DijkstraPathfinding.h"
 
@@ -14,13 +14,13 @@ class PathGenerator
 private:
     Pathfinding *algoPathfinding;
 
-    vector<Vector2<int>> generatedPath;
+    vector<Vector2f> generatedPath;
 
 public:
     PathGenerator();
     ~PathGenerator();
 
-    vector<Vector2<int>> generatePath(Vector2<int> startPos, Vector2<int> endPos);
+    vector<Vector2f> generatePath(Vector2f startPos, Vector2f endPos);
 
     friend std::ostream &operator<<(std::ostream &flux, PathGenerator const &pathGenerator);
 };

@@ -2,8 +2,8 @@
 
 #include <iostream>
 #include <vector>
-
-#include "Vector2.h"
+#include "Vector2i.h"
+#include "Vector2f.h"
 #include "Obstacle.h"
 
 using namespace std;
@@ -21,5 +21,5 @@ public:
     Pathfinding();
 
     virtual void updateObstacle(vector<Obstacle> obstacles) = 0; // go checker le polymorphisme et les classes abstraites sur openclassroom pour comprendre ces lignes
-    virtual vector<Vector2<int>> generatePath(Vector2<int> startPos, Vector2<int> endPos) = 0;
+    virtual vector<Vector2f> generatePath(Vector2f startPos, Vector2f endPos) = 0;
 };

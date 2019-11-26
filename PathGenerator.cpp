@@ -11,7 +11,7 @@ PathGenerator::~PathGenerator()
     algoPathfinding = NULL;
 }
 
-vector<Vector2<int>> PathGenerator::generatePath(Vector2<int> startPos, Vector2<int> endPos)
+vector<Vector2f> PathGenerator::generatePath(Vector2f startPos, Vector2f endPos)
 {
     this->generatedPath = this->algoPathfinding->generatePath(startPos, endPos);
 

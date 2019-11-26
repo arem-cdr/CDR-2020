@@ -16,5 +16,5 @@ public:
     AStarPathfinding(float a);
 
     virtual void updateObstacle(vector<Obstacle> obstacles);
-    virtual vector<Vector2<int>> generatePath(Vector2<int> startPos, Vector2<int> endPos);
+    virtual vector<Vector2f> generatePath(Vector2f startPos, Vector2f endPos);
 };

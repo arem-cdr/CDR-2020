@@ -1,16 +1,16 @@
 #include <iostream>
 
-#include "Vector2.h"
+#include "Vector2f.h"
 
 class Obstacle
 {
 private:
-    Vector2<int> position;
+    Vector2f position;
     int rayon; // en mm
 
 public:
     Obstacle();
-    Obstacle(Vector2<int> position, int rayon);
+    Obstacle(Vector2f position, int rayon);
 
-    Vector2<int> getPosition();
+    Vector2f getPosition();
 };
