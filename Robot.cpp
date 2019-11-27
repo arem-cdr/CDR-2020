@@ -10,7 +10,7 @@ Vector2f Robot::getLookAheadPoint(PathSmoother ps){
     int i = 0;
     float goodt=0 ;
     int goodi=0;
-    vector<PointS> p = ps.generateSPath();
+    vector<PointS> p = ps.getSPath();
     while(i<(p.size()-1)){
     
       Vector2f d = p[i+1].toV2f()-p[i].toV2f();
@@ -57,9 +57,23 @@ float Robot::getCurvature(Vector2f lookp){
     return curvature;
     
 }
+PointS Robot::getNearestPoint(PathSmoother ps){
+    vector<PointS> p = ps.getSPath();
+    float lastd = distance(location,p[0].toV2f());
+    PointS point = p[0];
+    int i = 0;
+    while(i<(p.size()-1)){
 
-float Robot::getVNormHere(PathSmoother p){
-    return 0; // TODO
+      if(distance(location,p[i].toV2f())<lastd){
+        lastd = distance(location,p[i].toV2f);
+        point = p[i];
+      }
+      i++;
+    }
+    return point;
+}
+float Robot::getVNormHere(PathSmoother ps){
+    return getNearestPoint(ps).getZ; 
 }
 
 void Robot::updateVlVr(PathSmoother p){

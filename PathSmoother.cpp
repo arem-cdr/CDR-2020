@@ -7,7 +7,7 @@ PathSmoother::PathSmoother(){
 
 }
 
-vector<PointS> PathSmoother::generateSPath(){
+void PathSmoother::generateSPath(vector<Vector2f> v){
 
 
 

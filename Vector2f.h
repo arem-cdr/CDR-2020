@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-
+#include <cmath>
 
 class Vector2f
 {
@@ -55,6 +55,9 @@ private:
     }
     friend float dot (Vector2f v1,Vector2f v2){
         return v1.x*v2.x + v1.y*v2.y;
+    }
+    friend float distance (Vector2f v1,Vector2f v2){
+        return sqrt(pow((v1.x-v2.x),2) + pow((v1.y-v2.y),2)) ;
     }
     
 };

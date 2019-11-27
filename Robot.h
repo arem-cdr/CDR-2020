@@ -16,7 +16,7 @@ private:
 
 public:
     Robot(Vector2f initLoc, float initAngle);
-
+    PointS getNearestPoint(PathSmoother ps);
     Vector2f getLookAheadPoint(PathSmoother ps);
     float getCurvature(Vector2f lookp);
     void updateVlVr(PathSmoother ps);

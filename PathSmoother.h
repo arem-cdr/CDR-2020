@@ -12,7 +12,8 @@ class PathSmoother
 
     public:
         PathSmoother();
-        vector<PointS> generateSPath();
+        void generateSPath(vector<Vector2f> v);
+        vector<PointS> getSPath() {return generatedPath;};
 
 
 
