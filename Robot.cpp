@@ -65,7 +65,7 @@ PointS Robot::getNearestPoint(PathSmoother ps){
     while(i<(p.size()-1)){
 
       if(distance(location,p[i].toV2f())<lastd){
-        lastd = distance(location,p[i].toV2f);
+        lastd = distance(location,p[i].toV2f());
         point = p[i];
       }
       i++;
@@ -73,7 +73,7 @@ PointS Robot::getNearestPoint(PathSmoother ps){
     return point;
 }
 float Robot::getVNormHere(PathSmoother ps){
-    return getNearestPoint(ps).getZ; 
+    return getNearestPoint(ps).getZ(); 
 }
 
 void Robot::updateVlVr(PathSmoother p){
