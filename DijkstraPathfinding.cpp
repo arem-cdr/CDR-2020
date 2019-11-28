@@ -58,6 +58,7 @@ vector<Vector2f> DijkstraPathfinding::generatePath(Vector2f startPos, Vector2f e
             }*/
         } 
     }
+    //TODO: USE THE CALCULUS TO REVERSE FROM END POINT THE PATH TO START POINT
     return returnVector;
 }
 
