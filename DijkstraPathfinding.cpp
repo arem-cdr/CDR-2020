@@ -6,7 +6,8 @@ DijkstraPathfinding::DijkstraPathfinding()
     {
         for (int j = 0; j < nbSubY; j++)
         {
-            matrix[i][j] = 0.f;
+            Vector2f init(1,-1); // COUT DE LA CASE / COUT ACTUEL
+            matrix[i][j] = init;
         }
     }
 }
@@ -40,22 +41,23 @@ vector<Vector2f> DijkstraPathfinding::generatePath(Vector2f startPos, Vector2f e
     Vector2i right(cell.getX()+1,cell.getY()+1);
 
     Vector2i nei[4] = {up,down,left,right};
+
     for(int h=0; h<4;h++){
         Vector2i ncell = nei[h];
         int ncelli = ncell.getX();
         int ncellj = ncell.getY();
-        float ncellcost = 1; // By default 1, but check if with function if not near obstacle or obstacle
-        float newcost = matrix[ci][cj] +ncellcost;
-        float currentcost = matrix[ncelli][ncellj];
+        if(ncelli<0 || ncellj<0 || ncelli> (nbSubX)-1 ||ncellj> (nbSubY)-1)continue; // CHECKS IF CELL IS VALID
+
+        float newcost = matrix[ci][cj].getY() +matrix[ncelli][ncellj].getX();
+        float currentcost = matrix[ncelli][ncellj].getY();
         if((currentcost  == -1) || (newcost < currentcost )){
-            matrix[ncelli][ncellj] = newcost; // TODO
+            Vector2f newc(matrix[ncelli][ncellj].getX(),newcost);
+            matrix[ncelli][ncellj] = newc; 
             /* this.pq.insert(e,newcost);
             this.matrix[e.i][e.j].pi = c.i;
             this.matrix[e.i][e.j].pj = c.j;
             this.matrix[e.i][e.j].w = e.ow;
-            if(this.matrix[e.i][e.j].type != ctype.END && e.type != ctype.OBSTACLE && this.matrix[e.i][e.j].type != ctype.START){
-            this.matrix[e.i][e.j].type= ctype.TRAIL;
-            }*/
+            */
         } 
     }
     //TODO: USE THE CALCULUS TO REVERSE FROM END POINT THE PATH TO START POINT
