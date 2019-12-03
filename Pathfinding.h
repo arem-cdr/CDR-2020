@@ -1,10 +1,13 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
 #include "Vector2i.h"
 #include "Vector2f.h"
 #include "Obstacle.h"
+#include "GlobalConst.h"
+#include "BasicFunctions.h"
+
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -22,4 +25,5 @@ public:
 
     virtual void updateObstacle(vector<Obstacle> obstacles) = 0; // go checker le polymorphisme et les classes abstraites sur openclassroom pour comprendre ces lignes
     virtual vector<Vector2f> generatePath(Vector2f startPos, Vector2f endPos) = 0;
+	virtual void affiche() const = 0;
 };

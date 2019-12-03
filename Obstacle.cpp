@@ -4,11 +4,16 @@ Obstacle::Obstacle() : rayon(0)
 {
 }
 
-Obstacle::Obstacle(Vector2f position, int rayon) : position(position), rayon(rayon)
+Obstacle::Obstacle(Vector2f position, float rayon) : position(position), rayon(rayon)
 {
 }
 
-Vector2f Obstacle::getPosition()
+Vector2f Obstacle::getPosition() const
 {
-    return this->position;
+    return position;
+}
+
+float Obstacle::getRayon() const
+{
+	return rayon;
 }

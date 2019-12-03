@@ -1,40 +1,134 @@
 #include "AStarPathfinding.h"
 
-/*AStarPathfinding::AStarPathfinding(float a)
+// Private Functions
+
+Vector2i AStarPathfinding::mmToIndMatrix(Vector2f mm)
 {
+	if (mm.getX() < 0.f || mm.getX() >= tableLength || mm.getY() < 0.f || mm.getY() >= tableWidth)
+		return Vector2i(-1, -1);
+
+	return Vector2i(static_cast<int>(mm.getX() * nbSubX / tableLength), static_cast<int>(mm.getY() * nbSubY / tableWidth));
 }
 
-virtual void updateObstacle(vector<Obstacle> obstacles)
+Vector2f AStarPathfinding::indMatrixToMm(Vector2i indMatrix)
 {
+	if (indMatrix.getX() < 0.f || indMatrix.getX() >= nbSubX || indMatrix.getY() < 0.f || indMatrix.getY() >= nbSubY)
+		return Vector2f(-1.f, -1.f);
+
+	return Vector2f(indMatrix.getX() * tableLength / nbSubX, indMatrix.getY() * tableWidth / nbSubY);
 }
 
-virtual vector<Vector2<int>> generatePath(Vector2<int> startPos, Vector2<int> endPos)
+void AStarPathfinding::clearMatrix()
 {
-}*/
-
-/*AStarPathfinding::AStarPathfinding()
-{
-    for (int i = 0; i < nbSubX; i++)
-    {
-        for (int j = 0; j < nbSubY; j++)
-        {
-            matrix[i][j] = 0.f;
-        }
-    }
-}*/
-
-/*Vector2<int> AStarPathfinding::mmToIndMatrix(Vector2<int> mm)
-{
-    Vector2<int> v;
-
-    if (mm.getX() < 0 || mm.getX() > 3000.f)
-        return v;
-    return v;
+	for (int i = 0; i < nbSubX; i++)
+	{
+		for (int j = 0; j < nbSubY; j++)
+		{
+			matrix[i][j] = 0.f;
+		}
+	}
 }
 
-Vector2<int> AStarPathfinding::indMatrixToMm(Vector2<int> indMatrix)
+void AStarPathfinding::addObstacle(Obstacle obstacle)
 {
-    Vector2<int> v;
+	for (int i = static_cast<int>(-obstacle.getRayon() * nbSubX / tableLength + mmToIndMatrix(obstacle.getPosition()).getX());
+		i <= static_cast<int>(obstacle.getRayon() * nbSubX / tableLength + mmToIndMatrix(obstacle.getPosition()).getX());
+		++i)
+	{
+		for (int j = static_cast<int>(-obstacle.getRayon() * nbSubY / tableWidth + mmToIndMatrix(obstacle.getPosition()).getY());
+			j <= static_cast<int>(obstacle.getRayon()* nbSubY / tableWidth + mmToIndMatrix(obstacle.getPosition()).getY());
+			j++)
+		{
+			matrix[i][j] = -1.f;
+		}
+	}
+}
 
-    return v;
-}*/
+float AStarPathfinding::heuristic(Vector2i NodePos, Vector2f endPos)
+{
+	return dist(indMatrixToMm(NodePos), endPos);
+}
+
+bool AStarPathfinding::isAccessible(int i, int j)
+{
+	return (i >= 0 && i < nbSubX && j >= 0 && j < nbSubY && matrix[i][j] != -1);
+}
+
+vector<Vector2i> AStarPathfinding::neighbors(Vector2i node)
+{
+	vector<Vector2i> returnVector;
+
+	for (int i = node.getX() - 1; i <= node.getX() + 1; ++i)
+	{
+		for (int j = node.getY() - 1; i <= node.getY() + 1; ++j)
+		{
+			if ((i != 0 || j != 0) && isAccessible(i, j))
+			{
+				returnVector.push_back(Vector2i(i, j));
+			}
+		}
+	}
+
+	return returnVector;
+}
+
+// Public Functions
+
+// Constructor
+AStarPathfinding::AStarPathfinding()
+{
+	for (int i = 0; i < nbSubX; i++)
+	{
+		for (int j = 0; j < nbSubY; j++)
+		{
+			matrix[i][j] = 0.f;
+		}
+	}
+
+	// tests
+	addObstacle(Obstacle(Vector2f(1000.f, 1000.f), 200.f));
+
+	affiche();
+}
+
+void AStarPathfinding::updateObstacle(vector<Obstacle> obstacles)
+{
+	clearMatrix();
+
+	for (unsigned int i = 0; i < obstacles.size(); ++i)
+	{
+		addObstacle(obstacles[i]);
+	}
+}
+
+vector<Vector2f> AStarPathfinding::generatePath(Vector2f startPos, Vector2f endPos)
+{
+
+
+	return vector<Vector2f>();
+}
+
+void AStarPathfinding::affiche() const
+{
+	for (int j = 0; j < nbSubY; j++)
+	{
+		for (int i = 0; i < nbSubX; i++)
+		{
+			if (matrix[i][j] == 0.f)
+			{
+				std::cout << ".";
+			}
+			else if (matrix[i][j] == -1.f)
+			{
+				std::cout << "x";
+			}
+			else
+			{
+				std::cout << " ";
+			}
+		}
+		std::cout << std::endl;
+	}
+
+	std::cout << std::endl;
+}

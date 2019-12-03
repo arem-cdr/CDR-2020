@@ -7,7 +7,7 @@
 class DijkstraPathfinding : public Pathfinding
 {
 private:
-    float matrix[nbSubX][nbSubY];
+    Vector2f matrix[nbSubX][nbSubY];
 
 public:
     DijkstraPathfinding();

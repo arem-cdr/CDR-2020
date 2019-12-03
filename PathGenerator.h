@@ -6,6 +6,7 @@
 #include "Vector2f.h"
 #include "Pathfinding.h"
 #include "DijkstraPathfinding.h"
+#include "AStarPathfinding.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 
 PathGenerator::PathGenerator()
 {
-    algoPathfinding = new DijkstraPathfinding();
+    algoPathfinding = new AStarPathfinding();
 }
 
 PathGenerator::~PathGenerator()
