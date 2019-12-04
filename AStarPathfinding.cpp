@@ -1,8 +1,7 @@
 #include "AStarPathfinding.h"
 
-// Private Functions
-
-Vector2i AStarPathfinding::mmToIndMatrix(Vector2f mm)
+// Non member functions
+Vector2i mmToIndMatrix(Vector2f const& mm)
 {
 	if (mm.getX() < 0.f || mm.getX() >= tableLength || mm.getY() < 0.f || mm.getY() >= tableWidth)
 		return Vector2i(-1, -1);
@@ -10,7 +9,7 @@ Vector2i AStarPathfinding::mmToIndMatrix(Vector2f mm)
 	return Vector2i(static_cast<int>(mm.getX() * nbSubX / tableLength), static_cast<int>(mm.getY() * nbSubY / tableWidth));
 }
 
-Vector2f AStarPathfinding::indMatrixToMm(Vector2i indMatrix)
+Vector2f indMatrixToMm(Vector2i const& indMatrix)
 {
 	if (indMatrix.getX() < 0.f || indMatrix.getX() >= nbSubX || indMatrix.getY() < 0.f || indMatrix.getY() >= nbSubY)
 		return Vector2f(-1.f, -1.f);
@@ -18,13 +17,15 @@ Vector2f AStarPathfinding::indMatrixToMm(Vector2i indMatrix)
 	return Vector2f(indMatrix.getX() * tableLength / nbSubX, indMatrix.getY() * tableWidth / nbSubY);
 }
 
+// Private Functions
+
 void AStarPathfinding::clearMatrix()
 {
 	for (int i = 0; i < nbSubX; i++)
 	{
 		for (int j = 0; j < nbSubY; j++)
 		{
-			matrix[i][j] = 0.f;
+			matrix[i][j] = Node({ true, 0.f, 0.f });
 		}
 	}
 }
@@ -39,19 +40,19 @@ void AStarPathfinding::addObstacle(Obstacle obstacle)
 			j <= static_cast<int>(obstacle.getRayon()* nbSubY / tableWidth + mmToIndMatrix(obstacle.getPosition()).getY());
 			j++)
 		{
-			matrix[i][j] = -1.f;
+			matrix[i][j].accessible = false;
 		}
 	}
 }
 
-float AStarPathfinding::heuristic(Vector2i NodePos, Vector2f endPos)
+float AStarPathfinding::heuristic(Vector2i NodePos, Vector2f endPos) const
 {
 	return dist(indMatrixToMm(NodePos), endPos);
 }
 
-bool AStarPathfinding::isAccessible(int i, int j)
+bool AStarPathfinding::isAccessible(int i, int j) const
 {
-	return (i >= 0 && i < nbSubX && j >= 0 && j < nbSubY && matrix[i][j] != -1);
+	return (i >= 0 && i < nbSubX && j >= 0 && j < nbSubY && matrix[i][j].accessible);
 }
 
 vector<Vector2i> AStarPathfinding::neighbors(Vector2i node)
@@ -81,7 +82,7 @@ AStarPathfinding::AStarPathfinding()
 	{
 		for (int j = 0; j < nbSubY; j++)
 		{
-			matrix[i][j] = 0.f;
+			matrix[i][j] = Node( { true, 0.f, 0.f } );
 		}
 	}
 
@@ -114,11 +115,11 @@ void AStarPathfinding::affiche() const
 	{
 		for (int i = 0; i < nbSubX; i++)
 		{
-			if (matrix[i][j] == 0.f)
+			if (matrix[i][j].accessible)
 			{
 				std::cout << ".";
 			}
-			else if (matrix[i][j] == -1.f)
+			else if (!matrix[i][j].accessible)
 			{
 				std::cout << "x";
 			}

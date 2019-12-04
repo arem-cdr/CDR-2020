@@ -11,8 +11,8 @@ public:
     Vector2f(float x, float y) : x(x), y(y) {}
     
 
-    float getX() { return y; }
-    float getY() { return x; }
+    float getX() const { return y; }
+    float getY() const { return x; }
     
 
 private:

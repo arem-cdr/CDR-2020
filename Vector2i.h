@@ -11,8 +11,8 @@ public:
     Vector2i(int x, int y) : x(x), y(y) {}
     
 
-    int getX() { return y; }
-    int getY() { return x; }
+    int getX() const { return y; }
+    int getY() const { return x; }
     
 
 private:
